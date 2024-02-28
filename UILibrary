@@ -82,7 +82,7 @@ function UiLibrary.new(name: string,image: number)
     mainGui.Frame.TopBar.GuiName.Text = name
     mainGui.Frame.TopBar.GuiName.Font = guiFont
     mainGui.Frame.TopBar.GuiName.TextSize = fontSizes[guiFont]
-    mainGui.Frame.TopBar.Imagelabel.Image = "rbxassetid://" image or "rbxassetid://0"
+    mainGui.Frame.TopBar.Imagelabel.Image = "rbxassetid://" .. image or "rbxassetid://0"
 
     table.insert(borders, mainGui.Frame.Border)
     table.insert(borders, mainGui.Frame.Tabs.Border)
@@ -105,12 +105,12 @@ function UiLibrary.new(name: string,image: number)
         local mouseConnection
         local dragConnection
 
-        mouseConnection = UserInputService.InputEnded:Connect(function(input)
+        mouseConnection = function(input)
             if input.UserInputType == Enum.UserInputType.MouseButton1 or input.UserInputType == Enum.UserInputType.MouseMovement then
                 dragConnection:Disconnect()
                 mouseConnection:Disconnect()
             end
-        end)
+        end
 
         dragConnection = UserInputService.InputChanged:Connect(function(input)
             if input.UserInputType == Enum.UserInputType.MouseMovement then
