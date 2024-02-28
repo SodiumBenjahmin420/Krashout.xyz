@@ -12,12 +12,7 @@ local GameList = {
 
 function GameList:CheckGame()
     
-    for i,Game in ipairs(GameList) do
-        
-        if Game == game.GameId then return Game[1];
-        
-        end
-    end
+   print("WORKING")
 end
 
 return GameList
