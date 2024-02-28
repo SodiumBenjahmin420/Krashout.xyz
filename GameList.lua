@@ -14,7 +14,7 @@ function GameList:CheckGame()
     
     for i,Game in GameList do
         
-        if Game == game.GameId then return game[1];
+        if Game == game.GameId then return Game[1];
         
         end
     end
