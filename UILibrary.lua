@@ -5,7 +5,7 @@ local RunService = game:GetService("RunService")
 local UserInputService = game:GetService("UserInputService")
 local TextService = game:GetService("TextService")
 
-local guiAssets = game:GetObjects("rbxassetid://13337778865")[1]
+local guiAssets = game:GetObjects("rbxassetid://16619218058")[1]
 local disabledColor = Color3.fromRGB(27, 27, 27)
 local unhighlightColor = Color3.fromRGB(41, 41, 41)
 local dropUnselectedColor = Color3.fromRGB(100, 100, 100)
@@ -76,28 +76,17 @@ local function spawnWithReuse(func, ...)
     task.spawn(freeThread, func, ...)
 end
 
-function UiLibrary.new(name: string,image: number)
+function UiLibrary.new(name: string)
     local secondaryDown = false
     mainGui = guiAssets.ScreenGui:Clone()
     mainGui.Frame.TopBar.GuiName.Text = name
     mainGui.Frame.TopBar.GuiName.Font = guiFont
     mainGui.Frame.TopBar.GuiName.TextSize = fontSizes[guiFont]
-    mainGui.Frame.TopBar.Imagelabel.Image = "rbxassetid://" .. image or "rbxassetid://0"
-
+    
     table.insert(borders, mainGui.Frame.Border)
     table.insert(borders, mainGui.Frame.Tabs.Border)
     table.insert(text, mainGui.Frame.TopBar.GuiName)
     table.insert(allTexts, mainGui.Frame.TopBar.GuiName)
-    table.insert(image,mainGui.Frame.TopBar.Imagelabel)
-
-    if syn and syn.protect_gui then
-        syn.protect_gui(mainGui)
-        mainGui.Parent = game.CoreGui
-    elseif gethui then
-        mainGui.Parent = gethui()
-    else
-        mainGui.Parent = game.CoreGui
-    end
 
     mainGui.Frame.TopBar.MouseButton1Down:Connect(function(X, Y)
         local offset = {X - mainGui.Frame.AbsolutePosition.X, Y - mainGui.Frame.AbsolutePosition.Y}
