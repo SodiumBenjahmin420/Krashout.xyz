@@ -100,7 +100,12 @@ local standName = getAbilityName(Stand)
 
 if fusedName and standName then
 	FinalStandName = fusedName[1] .. " " .. standName[2]
-else
+elseif  Fused == "None" then
+	
+	FinalStandName = Stand
+	
+	elseif Stand == "None" then
+
 	FinalStandName = "No Stand"
 end
 
