@@ -98,7 +98,7 @@ local FinalStandName
 local fusedName = getAbilityName(Fused)
 local standName = getAbilityName(Stand)
 
-if fusedName and standName and Stand and Fused then
+if fusedName and standName and Stand ~= "None" and Fused ~= "None" then
 	FinalStandName = fusedName[1] .. " " .. standName[2]
 elseif  Fused == "None" then
 	
