@@ -1,0 +1,107 @@
+local abilities = {
+	["StarPlatinum(Prime)"] = {"Star", "Platinum(Prime)"},
+	["MagiciansRed"] = {"Red", "Magician"},
+	["SilverChariot"] = {"Silver", "Chariot"},
+	["HierophantGreen"] = {"Green", "Hierophant"},
+	["Cream"] = {"Cream", "Cream"},
+	["Osiris"] = {"Osiris", "Osiris"},
+	["TheWorld"] = {"The", "World"},
+	["CrazyDiamond"] = {"Crazy", "Diamond"},
+	["TheHand"] = {"The", "Hand"},
+	["Echoes"] = {"Echo", "Echoes"},
+	["StarPlatinum"] = {"Star", "Platinum"},
+	["HeavensDoor"] = {"Heavens", "Door"},
+	["HighwayStar"] = {"Highway", "Star"},
+	["KillerQueen"] = {"Killer", "Queen"},
+	["GoldExperience"] = {"Gold", "Experience"},
+	["StickyFingers"] = {"Sticky", "Fingers"},
+	["PurpleHaze"] = {"Purple", "Haze"},
+	["MoodyBlues"] = {"Moody", "Blues"},
+	["BlackSabbath"] = {"Black", "Sabbath"},
+	["SpiceGirl"] = {"Spice", "Girl"},
+	["KingCrimson"] = {"King", "Crimson"},
+	["Chariot"] = {"Chariot", "Chariot"},
+	["StoneFree"] = {"Free", "Stone"},
+	["Kiss"] = {"Kiss", "Kiss"},
+	["WeatherReport"] = {"Weather", "Report"},
+	["DiverDown"] = {"Diver", "Down"},
+	["Whitesnake"] = {"White", "Snake"},
+	["C-Moon"] = {"C-", "Moon"},
+	["MadeInHeaven"] = {"MadeIn", "Heaven"},
+	["Tusk3"] = {"Tusk", "Tusk"},
+	["BallBreaker"] = {"Ball", "Breaker"},
+	["D4C"] = {"D4", "C"},
+	["BokuNoRhythmWoKiitekure"] = {"BokuNoRhythmWo", "Kiitekure"},
+	["TheWorld(AlternateUniverse)"] = {"The", "World(AlternateUniverse)"},
+	["SoftAndWet"] = {"Soft", "AndWet"},
+	["SpeedKing"] = {"Speed", "King"},
+	["KillerQueen(AlternateUniverse)"] = {"Killer", "Queen(AlternateUniverse)"},
+	["SymphonyOfDestruction"] = {"SymphonyOf", "Destruction"},
+	["Rumble"] = {"Rumble", "Rumble"},
+	["StarPlatinum(OverHeaven)"] = {"Star", "Platinum(OverHeaven)"},
+	["TheWorld(OverHeaven)"] = {"The", "World(OverHeaven)"},
+	["Star-SpangledBanner"] = {"Star-Spangled", "Banner"},
+	["WhiteWedding"] = {"White", "Wedding"},
+	["SmashingPumpkin"] = {"Smashing", "Pumpkin"},
+	["GuestPlatinum"] = {"Platinum", "Guest"},
+	["Aerosmith"] = {"Aero", "Smith"},
+	["Anubis"] = {"Anubis", "Anubis"},
+	["AtomHeartFather"] = {"AtomHeart", "Father"},
+	["CreamStarter"] = {"Cream", "Starter"},
+	["Harvest"] = {"Harvest", "Harvest"},
+	["HeyYa"] = {"Hey", "Ya"},
+	["HermitPurple"] = {"Hermit", "Purple"},
+	["Mandom"] = {"Mandom", "Mandom"},
+	["Mr.President"] = {"Mr.", "President"},
+	["Ratt"] = {"Ratt", "Ratt"},
+	["RollingStones"] = {"Rolling", "Stones"},
+	["ScaryMonsters"] = {"Scary", "Monsters"},
+	["SixPistols"] = {"Six", "Pistols"},
+	["TheEmperor"] = {"Emperor", "Emperor"},
+	["TheSun"] = {"Sun", "Sun"},
+	["WhiteAlbum"] = {"White", "Album"},
+	["Cream(OverHeaven)"] = {"Cream", "(OverHeaven)"},
+	["Metallica"] = {"Metal", "Metallica"},
+	["FunFunFun"] = {"Fun", "FunFun"},
+	["CrazyTrain"] = {"Crazy", "Train"},
+	["20thCenturyBoy"] = {"20thCentury", "Boy"},
+	["TheGratefulDead"] = {"TheGrateful", "Dead"},
+	["BoyIIMan"] = {"BoyII", "Man"},
+	["ChocolateDisco"] = {"Chocolate", "Disco"},
+	["Hamon"] = {"Hamon", "Hamon"},
+	["CaesarHamon"] = {"Caesar", "Caesar"},
+	["JosephHamon"] = {"Joseph", "Joseph"},
+	["Pillarman"] = {"Pillarman", "Pillarman"},
+	["Cyborg"] = {"Cyborg", "Cyborg"},
+	["Kars"] = {"Kars", "Kars"},
+	["Wamuu"] = {"Wamuu", "Wamuu"},
+	["Spin"] = {"Spin", "Spin"},
+	["Vampire"] = {"Vampire", "Vampire"},
+	["UltimateLifeform"] = {"UltimateLifeform", "UltimateLifeform"},
+	["WonderOfU"] = {"WonderOf", "U"},
+	["GreenDay"] = {"Green", "Day"},
+	["DarkBlueMoon"] = {"DarkBlue", "Moon"}
+}
+local function getAbilityName(stand)
+	if abilities[stand] then
+		return abilities[stand]
+	else
+		return {"Unknown", "Ability"}
+	end
+end
+
+local Stand = game:GetService("Players").LocalPlayer.Stand.Value
+local Fused = game:GetService("Players").LocalPlayer.FusedStand.Value
+
+local FinalStandName
+
+local fusedName = getAbilityName(Fused)
+local standName = getAbilityName(Stand)
+
+if fusedName and standName then
+	FinalStandName = fusedName[1] .. " " .. standName[2]
+else
+	FinalStandName = "No Stand"
+end
+
+return FinalStandName
