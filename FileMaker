@@ -1,0 +1,55 @@
+local FileMaker = {}
+
+local HttpService = game:GetService("HttpService")
+
+local function ensureFolderExists(path)
+    if isfolder and not isfolder(path) then
+        makefolder(path)
+    end
+end
+
+function FileMaker.getfile(folder, name, defaultSettings)
+    local contents = {}
+    local baseFolder = "KrashoutXYZ"
+    ensureFolderExists(baseFolder)
+    
+    if folder and folder ~= "" then
+        baseFolder = baseFolder .. "/" .. folder
+        ensureFolderExists(baseFolder)
+    end
+
+    local fileName = baseFolder .. "/" .. name .. ".txt"
+
+    if writefile then
+        if isfile(fileName) then
+            contents = HttpService:JSONDecode(readfile(fileName))
+        else
+            contents = defaultSettings
+            writefile(fileName, HttpService:JSONEncode(contents))
+        end
+
+        for key, value in pairs(defaultSettings) do
+            if contents[key] == nil then
+                contents[key] = value
+            end
+        end
+
+        writefile(fileName, HttpService:JSONEncode(contents))
+    end
+
+    local contentsProxy = setmetatable({}, {
+        __newindex = function(_self, key, value)
+            contents[key] = value
+            if writefile then
+                writefile(fileName, HttpService:JSONEncode(contents))
+            end
+        end,
+        __index = function(_self, index)
+            return contents[index]
+        end
+    })
+
+    return contentsProxy
+end
+
+return FileMaker
